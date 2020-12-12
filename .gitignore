@@ -1,2 +1,13 @@
-#Except every __pycache__
+#Ignore every __pycache__
 **/__pycache__
+
+#Ignore all in parent dir
+/*
+
+
+
+#Except
+!src
+!.gitignore
+!makefile
+!readme.md
