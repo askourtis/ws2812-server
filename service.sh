@@ -21,10 +21,14 @@ WantedBy=multi-user.target"
 echo "[Service $NAME]"
 echo "Stopping service..."
 systemctl stop $NAME
+echo "Disabling service..."
+systemctl disable $NAME
 echo "Installing service..."
 echo -e "$CONTENTS" > /etc/systemd/system/$NAME.service
 echo "Reloading..."
 systemctl daemon-reload
+echo "Enabling service..."
+systemctl enable $NAME
 echo "Starting service..."
 systemctl start $NAME
 echo "Done."
