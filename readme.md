@@ -61,7 +61,7 @@ To install the service execute the following
 sudo make service
 ```
 
-The service default name is ```smart-leds-server``` but it can be changed by changing the _NAME_ variable in the following files:
+The service default name is ```smart-leds-server``` but it can be changed by changing the ```NAME``` variable in the following files:
 
 - [service.sh](./service.sh)
 - [daemon-controller.sh](./daemon-controller.sh)
@@ -80,4 +80,4 @@ sudo screen -rd smart-leds-server
 
 Please consider having only one screen named as smart-leds-server, so you dont have conflicting screen names!
 
-If the _NAME_ variable was changed, then the screen name will change accordingly!
+If the ```NAME``` variable was changed, then the screen name will change accordingly!
