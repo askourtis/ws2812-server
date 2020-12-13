@@ -50,3 +50,34 @@ There are 4 possible codes (for now):
 |0x1|R,G,B|Sets the ledstrip to a single RGB color|```[0x1, 0x00, 0xFF, 0x00]```
 |0x2|i,R,G,B|Sets a specific led in the ledstrip to an RGB color|```[0x2, 0x3, 0xFF, 0x00, 0xFF]```
 |0x3|ByteArray|Selects an animation to be played|```[0x3, *b'rainbow']```
+
+## Service Installation
+
+To ensure that the script will run on startup, the Systemd Services. The installation script is robust and subject of change, as soon as my knowledge on the topic get better.
+
+To install the service execute the following
+
+```bash
+sudo make service
+```
+
+The service default name is ```smart-leds-server``` but it can be changed by changing the _NAME_ variable in the following files:
+
+- [service.sh](./service.sh)
+- [daemon-controller.sh](./daemon-controller.sh)
+
+This change should occure before service installation!
+
+## Console
+
+The service starts a screen session with the name of the prementions variables. This screen is a part of the superuser screens since the command starts with sudo.
+
+To connect to the default screen execute the following:
+
+```bash
+sudo screen -rd smart-leds-server
+```
+
+Please consider having only one screen named as smart-leds-server, so you dont have conflicting screen names!
+
+If the _NAME_ variable was changed, then the screen name will change accordingly!

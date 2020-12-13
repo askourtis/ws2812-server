@@ -11,3 +11,4 @@
 !.gitignore
 !makefile
 !readme.md
+!*.sh
