@@ -19,7 +19,7 @@ def daemon(key=None):
         Callable: The actual decorator
     """
     if key is not None and key in _daemons:
-        raise KeyError(f"The key: ${key} is already in the thread pool.")
+        raise KeyError(f"The key: {key} is already in the thread pool.")
     
     def decorator(target):
         thread = threading.Thread(target=target, daemon=True)
@@ -47,7 +47,7 @@ def raise_at(key, exception):
     elif key in _daemons:
         threads = [ _daemons[key] ]
     else:
-        raise KeyError(f"The key: ${key} is not in the thread pool.")
+        raise KeyError(f"The key: {key} is not in the thread pool.")
 
     for thread_obj in threads:
         found = False

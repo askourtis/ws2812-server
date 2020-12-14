@@ -33,6 +33,6 @@ def get_animation(key):
         raise KeyError("None is not a valid key.")
     
     if key not in _animations:
-        raise KeyError(f"Key: ${key} is not in use.")
+        raise KeyError(f"Key: {key} is not in use.")
     
     return _animations[key]
