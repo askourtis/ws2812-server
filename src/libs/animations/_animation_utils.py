@@ -1,31 +1,20 @@
-from ..utils import export
+from .. import export
 
 _animations = {}
 
 @export
-def animation(key):
-    """Registers an animation
-
-    Args:
-        key (AnyStr): A key to store the animation
-
-    Raises:
-        KeyError: If the key is none or already in use
-
-    Returns:
-        [Callable]: A decorator to register the target
-    """
-    if key is None:
-        raise KeyError("None is not a valid key.")
+def animation(target):
+    """Registers an animation"""
+    key = target.__name__
     
     if key in _animations:
-        raise KeyError(f"Key: {key} is already in use.")
+        raise KeyError(f"Key: {key} is already registered.")
     
-    def decorator(target):
-        _animations[key] = target
-        print(f"Added new animation: {key}")
-        return target
-    return decorator
+    _animations[key] = target
+    print(f"Added new animation: {key}")
+    
+    return target
+
 
 @export
 def get_animation(key):

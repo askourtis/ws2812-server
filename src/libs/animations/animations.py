@@ -1,9 +1,8 @@
-from ..utils           import export
+from ..                import export, Color
 from ._animation_utils import animation
 from time              import sleep
-from ..utils           import Color
 
-@animation(key="rainbow")
+@animation
 def rainbow(strip):
     LEN  = len(strip)*50
     LEDS = [ Color.HSV(v*360/LEN, 1, 1) for v in range(LEN) ]
