@@ -67,6 +67,8 @@ def animator():
             animation(strip)
         except InterruptedError:
             print("ANIMATOR: Interrupted")
+        except Exception as ex:
+            print(f"ANIMATOR:ERROR: {ex}")
 
 @daemon(key=Threading.Keys.PRODUCER)
 def producer():
@@ -74,15 +76,18 @@ def producer():
     with socket(Networking.INET, Networking.UDP) as sock:
         sock.bind(Networking.ADDRESS)
         while True:
-            print("NETWORK: Wait for packet...")
-            data, addr = sock.recvfrom(1024)
-            print(f"NETWORK: Recieved from {addr} data={data}")
-            requests.put_nowait( (data[0], data[1:]) )
+            try:
+                print("NETWORK: Wait for packet...")
+                data, addr = sock.recvfrom(1024)
+                print(f"NETWORK: Recieved from {addr} data={data}")
+                requests.put_nowait( (data[0], data[1:]) )
+            except Exception as ex:
+                print(f"NETWORK:ERROR: {ex}")
 # !SECTION
 
 # SECTION Main
-try:
-    while True:
+while True:
+    try:
         print("CONSUMER: Wait for command...")
         code, data = requests.get()
         print(f"CONSUMER: Popped code={code} with data={data}")
@@ -104,10 +109,10 @@ try:
             animation_queue.put_nowait(get_animation(data.decode()))
         else:
             print(f"CONSUMER: Could not translate code={code}")
-except KeyboardInterrupt:
-    pass
-except Exception as ex:
-    print(f"CONSUMER: Could not translate code={code}\n\tError: {ex}")
+    except KeyboardInterrupt:
+        break
+    except Exception as ex:
+        print(f"CONSUMER:ERROR: {ex}")
 # !SECTION
 
 
