@@ -1,2 +1,2 @@
-from ._export import export
-from ._color  import Color
+from ._export import *
+from ._color  import *

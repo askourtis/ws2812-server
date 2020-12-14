@@ -1,5 +1,5 @@
 #@format
-from ..utils import export
+from .. import export
 import threading
 import ctypes
 

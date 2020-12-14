@@ -1,4 +1,4 @@
-from ..utils import export
+from .. import export
 
 @export
 def add_attr(at, name):

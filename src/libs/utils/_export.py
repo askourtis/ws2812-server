@@ -1,5 +1,7 @@
 import sys
 
+__all__ = [ 'export' ]
+
 def export(target):
     """Exposes the selected callable to the namespace
 

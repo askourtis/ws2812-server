@@ -1,7 +1,7 @@
 from rpi_ws281x         import PixelStrip
-from ..utils            import export
 from ._extension_tools  import add_attr
 
+__all__ = []
 
 @add_attr(PixelStrip, "__len__")
 def strip_len(self):
