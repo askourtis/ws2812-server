@@ -63,7 +63,7 @@ def animator():
         try:
             print("ANIMATOR: Waiting next animation...")
             animation = animation_queue.get()
-            print("ANIMATOR: Playing animation")
+            print(f"ANIMATOR: Playing animation {animation.__name__}")
             animation(strip)
         except InterruptedError:
             print("ANIMATOR: Interrupted")
